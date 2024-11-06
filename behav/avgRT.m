@@ -17,14 +17,14 @@ for i = 1:numSubjects
         rtbound4{i} = [];
         rtbound5{i} = [];
         rtboundn{i} = [];
-    continue; % 이 trials를 건너뛰고 다음 i로 이동
+    continue; 
     end
 
     for j = 1:numBlocks
         blocknum = trials{j, 1}.blocknum;
 
         if isempty(rts{i, 1}{j, 1})
-        rts_value = NaN; % 빈 배열인 경우 NaN 할당
+        rts_value = NaN;
         else
         rts_value = rts{i, 1}{j, 1}; 
         end
