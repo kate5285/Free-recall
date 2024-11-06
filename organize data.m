@@ -8,31 +8,31 @@ for i = 1:length(subjects)
     for j = 1:length(blockn)
         block_data = subj_data(subj_data{:,'Trial (BLOCK) #'} == blockn(j), :);
         trial_struct = struct();
-        trial_struct.sbj=block_data{:,'SBJ #'}{1};
+        trial_struct.sbj=block_data{:,'SBJ #'}{1}; % subject number
 
-        trial_struct.ansnum = block_data{:,'Answer #'};
+        trial_struct.ansnum = block_data{:,'Answer #'}; % number of answers
 
         if any(trial_struct.ansnum == 0)
-        trial_struct.allansnum = numel(trial_struct.ansnum) - 1;
+        trial_struct.allansnum = numel(trial_struct.ansnum) - 1; %total number of recalls
         else
         disp("wrong ans 0");
         end
 
-        trial_struct.answord = block_data.word;
-        trial_struct.wrongword = block_data{:,'wrong word'};
-        trial_struct.anstime = block_data.time;
+        trial_struct.answord = block_data.word; % words that are recalled
+        trial_struct.wrongword = block_data{:,'wrong word'}; % wrong recalls
+        trial_struct.anstime = block_data.time; % time points of recall
 
-        num_wrong_words = sum(~cellfun(@isempty, trial_struct.wrongword)); % 오답 단어 수
-        trial_struct.ransnum = trial_struct.allansnum - num_wrong_words;
+        num_wrong_words = sum(~cellfun(@isempty, trial_struct.wrongword)); 
+        trial_struct.ransnum = trial_struct.allansnum - num_wrong_words; % number of correct recalls
    
-        trial_struct.serial = block_data{:,'Trial (BLOCK) #'}(1,1);
+        trial_struct.serial = block_data{:,'Trial (BLOCK) #'}(1,1); %block number
         blocks{j} = trial_struct;
     end
     Alldata{i} = blocks;
 end
 numSubjects = length(Alldata);
 
-numSubjects = length(Alldata);
+%delete repeated words
 for i = 1:numSubjects
     trials = Alldata{i, 1};
     numBlocks = length(trials);
