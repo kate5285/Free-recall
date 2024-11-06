@@ -60,7 +60,7 @@ rtSEs=[rtSE4, rtSE5, rtSEn];
 figure;
 bar(rtmeans);
 hold on;
-errorbar(1:3, rtmeans, rtSEs, 'k', 'linestyle', 'none');  % 'k'는 검은색 에러바
+errorbar(1:3, rtmeans, rtSEs, 'k', 'linestyle', 'none');
 hold off;
 set(gca, 'XTickLabel', {'Boundary 4:4', 'Boundary 5:3', 'No Boundary'});  
 ylabel('average RT of recalls(correct ones)'); 
