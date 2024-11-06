@@ -25,7 +25,7 @@ for i = 1:length(subjects)
         num_wrong_words = sum(~cellfun(@isempty, trial_struct.wrongword)); 
         trial_struct.ransnum = trial_struct.allansnum - num_wrong_words; % number of correct recalls
    
-        trial_struct.serial = block_data{:,'Trial (BLOCK) #'}(1,1); %block number
+        trial_struct.serial = block_data{:,'Trial (BLOCK) #'}(1,1); %order of the blocks presented
         blocks{j} = trial_struct;
     end
     Alldata{i} = blocks;
